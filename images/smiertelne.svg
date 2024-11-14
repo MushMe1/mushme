@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 655.12 655.12">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.57px;
+      }
+
+      .cls-3, .cls-4, .cls-5, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        stroke-width: 2.36px;
+      }
+
+      .cls-4, .cls-2 {
+        stroke: #1d1d1b;
+      }
+
+      .cls-5 {
+        fill: #1d1d1b;
+        stroke: #000;
+      }
+
+      .cls-5, .cls-2 {
+        stroke-width: .79px;
+      }
+    </style>
+  </defs>
+  <g id="circle">
+    <circle class="cls-1" cx="327.56" cy="327.56" r="327.56"/>
+  </g>
+  <g id="Warstwa_3" data-name="Warstwa 3">
+    <circle class="cls-4" cx="325.25" cy="204.05" r="123.02"/>
+    <rect class="cls-4" x="227.55" y="267.59" width="198.52" height="69.9"/>
+    <circle class="cls-2" cx="276.56" cy="211.08" r="25.63"/>
+    <circle class="cls-2" cx="366.5" cy="211.08" r="25.63"/>
+    <line class="cls-3" x1="322.69" y1="337.49" x2="322.69" y2="291.82"/>
+    <line class="cls-3" x1="377.68" y1="337.49" x2="377.68" y2="290.89"/>
+    <line class="cls-3" x1="273.5" y1="337.49" x2="273.5" y2="291.82"/>
+  </g>
+  <g id="Warstwa_4" data-name="Warstwa 4">
+    <rect class="cls-5" x="314.69" y="302.06" width="45.98" height="326.82" rx="12" ry="12" transform="translate(-226.61 576.22) rotate(-65.14)"/>
+    <circle class="cls-5" cx="213.95" cy="408.84" r="44.74"/>
+    <circle class="cls-5" cx="448.97" cy="514.97" r="44.74"/>
+    <rect class="cls-5" x="305.99" y="293.68" width="45.98" height="326.82" rx="12" ry="12" transform="translate(605.45 -33.55) rotate(65.14)"/>
+    <circle class="cls-5" cx="205.25" cy="513.73" r="44.74"/>
+    <circle class="cls-5" cx="440.27" cy="407.6" r="44.74"/>
+  </g>
+</svg>

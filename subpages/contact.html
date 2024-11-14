@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zbieraj i poznawaj grzyby razem z MushME!"
+    />
+    <title>MushME</title>
+    <link rel="icon" href="images/LOGO_LOGO.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- KUTE.js Biblioteka -->
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
+    <!-- FontaAwesome CDN ikonki-->
+    <script src="https://kit.fontawesome.com/ba9be5322f.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <input type="checkbox" id="sidebar-active">
+        <label for="sidebar-active" class="open-sidebar-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path style="fill:#d5f7fc;" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        </label>
+        <label id="overlay" for="sidebar-active"></label>
+        <div class="links-container">
+          <label for="sidebar-active" class="close-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path style="fill:#d5f7fc;" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+          </label>
+          
+          <a class="home-link" href="/index.html">Home</a> 
+          <a href="/index.html#products">Produkty</a> 
+          <a href="#">Kontakt</a>
+          <a href="blog.html">Blog</a>
+          <a href="/login.html">Zaloguj się</a>
+          
+        </div>
+      </nav>
+    </header>
+
+    <div class="section__spacer section__spacer--header"></div>
+
+    <section class="section section--contact" id="contact">
+      <h2 class="heading">Skontaktuj się z nami! </h2>
+  
+      <form action="/php/contact.php" method="POST" name="submit-to-google-sheet">
+        <div class="input-box">
+          <input type="text" name="Name" placeholder="Full Name">
+          <input type="email" name="Email" placeholder="Email Address">
+        </div>
+        <div class="input-box">
+          <input type="number" name="MobileNumber" placeholder="Mobile Number">
+          <input type="text" name="EmailSubject" placeholder="Email Subject">
+        </div>
+        <textarea name="YourMessage" cols="30" rows="10" placeholder="Your Message"></textarea>
+        <input type="submit" value="Send Message" class="btn btn--primary">
+      </form>
+    </section>
+
+    <div class="section__spacer section__spacer--primary flip"></div>
+
+    <section class="section section--faq">
+      
+      <article class="team">
+        <div class="team__caption">
+            <h3>Członkowie zespołu</h3>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Adres email</th>
+                    <th>Specjalizacja</th>
+                </tr>
+            </thead>
+            <tbody id="team__members">
+                <tr>
+                    <td class="team__profile">
+                        <img src="/images/pp.jpg" alt="Szymon Budny">
+                        <div class="team__info">
+                            <div class="team__name">Szymon Budny</div>
+                            <div class="team__alias">@sinkarre</div>
+                        </div>
+                    </td>
+                    <td>
+                        sinkarreofficial@gmail.com
+                    </td>
+                    <td>
+                        <div class="team__tags">
+                            <div class="team__tag team__tag--dev">Dev</div>
+                            <div class="team__tag team__tag--design">design</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="team__profile">
+                        <img src="/images/pp.jpg" alt="Mikołaj Walczak">
+                        <div class="team__info">
+                            <div class="team__name">Mikołaj Walczak</div>
+                            <div class="team__alias">@mwalczak</div>
+                        </div>
+                    </td>
+                    <td>
+                        mikolaj.walczak.pv@gmail.com
+                    </td>
+                    <td>
+                        <div class="team__tags">
+                            <div class="team__tag team__tag--dev">Dev</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="team__profile">
+                        <img src="/images/pp.jpg" alt="Jakub Woźniak">
+                        <div class="team__info">
+                            <div class="team__name">Jakub Woźniak</div>
+                            <div class="team__alias">@jwozniak</div>
+                        </div>
+                    </td>
+                    <td>
+                        jakub.wozniak.kontakt.biz@gmail.com
+                    </td>
+                    <td>
+                        <div class="team__tags">
+                            <div class="team__tag team__tag--design">design</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="team__profile">
+                        <img src="/images/pp.jpg" alt="Jacek Malczewski">
+                        <div class="team__info">
+                            <div class="team__name">Jacek Malczewski</div>
+                            <div class="team__alias">@blacktiger</div>
+                        </div>
+                    </td>
+                    <td>
+                        blacktiger7u@gmail.com
+                    </td>
+                    <td>
+                        <div class="team__tags">
+                            <div class="team__tag team__tag--dev">dev</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </article>
+
+      <div class="faq faq-container">
+        <details class="faq__details">
+            <summary class="faq__summary">
+                <span class="faq__title">
+                    Jaki jest temat naszego projektu?
+                </span>
+                <svg width="10%" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+                        fill="#0F0F0F" />
+                </svg>
+            </summary>
+            <div class="faq__content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore enim quam nulla minus, omnis fugit
+                ducimus! Ad, a beatae impedit soluta dignissimos animi nostrum, dolores aut voluptates ipsa aliquam
+                totam.
+            </div>
+        </details>
+        <details class="faq__details">
+            <summary class="faq__summary">
+                <span class="faq__title">
+                    Jak zamierzamy rozwinąć nasz projekt?
+                </span>
+                <svg width="10%" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+                        fill="#0F0F0F" />
+                </svg>
+            </summary>
+            <div class="faq__content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore enim quam nulla minus, omnis fugit
+                ducimus! Ad, a beatae impedit soluta dignissimos animi nostrum, dolores aut voluptates ipsa aliquam
+                totam.
+            </div>
+        </details>
+        <details class="faq__details">
+            <summary class="faq__summary">
+                <span class="faq__title">
+                    Co nasz projekt może zmienić dla innych?
+                </span>
+                <svg width="10%" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+                        fill="#0F0F0F" />
+                </svg>
+            </summary>
+            <div class="faq__content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore enim quam nulla minus, omnis fugit
+                ducimus! Ad, a beatae impedit soluta dignissimos animi nostrum, dolores aut voluptates ipsa aliquam
+                totam.
+            </div>
+        </details>
+      </div>
+      
+    </section>
+
+    <div class="section__spacer section__spacer--primary flip"></div>
+
+    <footer class="section--footer">
+      <div class="footer__container">
+        <div class="footer__wrapper">
+          <div class="footer__widget">
+            <a href="#">
+              <img src="/images/logo-svg.svg" class="logo" />
+            </a>
+            <p class="desc">
+              Chcesz doznać niezapomnianych grzybobrań, ratować chronione 
+              gatunki i móc z czystym sumieniem zbierać grzyby od wiosny do zimy?
+              Sprawdź Mushme!
+            </p>
+            <ul class="socials">
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-google-play"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-discord"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-tiktok"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-kickstarter"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__widget">
+            <h6>Szybkie linki</h6>
+            <ul class="links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">O nas</a></li>
+              <li><a href="#">Blog MushMe</a></li>
+            </ul>
+          </div>
+          <div class="footer__widget">
+            <h6>Produkty</h6>
+            <ul class="links">
+              <li><a href="#">Asystent MushMe</a></li>
+              <li><a href="#">Mapa Grzybowa</a></li>
+              <li><a href="#">Atlas Grzybów</a></li>
+              <li><a href="#">Symulator MushMe</a></li>
+            </ul>
+          </div>
+          <div class="footer__widget">
+            <h6>Pomoc i Kontakt</h6>
+            <ul class="links">
+              <li><a href="#">Rejestracja</a></li>
+              <li><a href="#">Logowanie</a></li>
+              <li><a href="#">Kontakt</a></li>
+              <li><a href="#">Polityka Prywatności</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright-wrapper">
+          <p>
+            &#169 Design by
+            <a href="#" target="blank">MushMe</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

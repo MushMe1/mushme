@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <section class="section section--register">
+      <form class="signup">
+        <a href="/index.html" id="signin__home-button"><- Home</a>
+        <div class="signup__welcomeRow">
+          <a href="#" title="Logo">
+            <img src="/images/logo-svg.svg" alt="Logo" class="signup__logo" />
+          </a>
+          <h1 class="signup__welcome">Zaloguj się aby do nas dołączyć!</h1>
+        </div>
+        <div class="signup__google">
+          <a href="#" title="Use Google">
+            <img src="/images/google.webp" alt="Google" />
+            Zaloguj się przez Google
+          </a>
+        </div>
+        <div class="signup__lines">
+          <div class="signup__line"></div>
+          LUB
+          <div class="signup__line"></div>
+        </div>
+        <div class="signup__nameSurname">
+          <div class="signup__name">
+            <label for="name-su">Imię</label>
+            <input
+              type="text"
+              name="name-su"
+              autocomplete="off"
+              placeholder="Jan"
+              required
+            />
+          </div>
+          <div class="signup__surname">
+            <label for="surname-su">Nazwisko</label>
+            <input
+              type="text"
+              name="surname-su"
+              autocomplete="off"
+              placeholder="Nowak"
+              required
+            />
+          </div>
+        </div>
+        <div class="signup__email">
+          <label for="email-su">Email</label>
+          <input
+            type="email"
+            name="email-su"
+            autocomplete="off"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+        <div class="signup__password">
+          <label for="password-su">Hasło</label>
+          <input
+            type="password"
+            name="password-su"
+            autocomplete="off"
+            placeholder="******"
+            minlength="6"
+            required
+          />
+        </div>
+        <button type="submit" class="signup__button">Zarejestruj się</button>
+      </form>
+    </section>
+  </body>
+</html>

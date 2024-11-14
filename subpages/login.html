@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <section class="section section--login">
+      <form class="signin">
+        <a href="/index.html" id="signin__home-button"><- Home</a>
+        <div class="signin__welcomeRow">
+          <a href="#" title="Logo">
+            <img src="/images/logo-svg.svg" alt="Logo" class="signin__logo" />
+          </a>
+          <h1 class="signin__welcome">Zaloguj się aby do nas dołączyć!</h1>
+        </div>
+        <div class="signin__google">
+          <a href="#" title="Use Google">
+            <img src="/images/google.webp" alt="Google" />
+            Zaloguj się przez Google
+          </a>
+        </div>
+        <div class="signin__lines">
+          <div class="signin__line"></div>
+          LUB
+          <div class="signin__line"></div>
+        </div>
+        <div class="signin__email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            autocomplete="off"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+        <div class="signin__password">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            name="password"
+            autocomplete="off"
+            placeholder="******"
+            minlength="6"
+            required
+          />
+        </div>
+        <button type="submit" class="signin__button">Zaloguj się</button>
+        <div class="signin__actions">
+          <div class="signin__row">
+            <span>Nie masz konta?</span>
+            <a href="/subpages/registration.html" title="Stwórz konto">
+              Zarejestruj się
+            </a>
+          </div>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Zbieraj i poznawaj grzyby razem z MushME!" />
+<title>MushME</title>
+<link rel="icon" href="/images/LOGO_LOGO.svg" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- KUTE.js Biblioteka -->
+<script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
+<!-- FontaAwesome CDN ikonki-->
+<script src="https://kit.fontawesome.com/ba9be5322f.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                    <path style="fill:#d5f7fc;"
+                        d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </label>
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                        <path style="fill:#d5f7fc;"
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg>
+                </label>
+
+                <a class="home-link" href="/index.html">Home</a>
+                <a href="/index.html#products">Produkty</a>
+                <a href="/subpages/contact.html">Kontakt</a>
+                <a href="#">Blog</a>
+                <a href="/subpages/login.html">Zaloguj się</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <div id="map">
+        <div class="distance-control" id="distance">Łączny dystans: 0 km</div>
+        <button id="trackButton" class="button track-button">Start trasy</button>
+        <button id="carButton" class="button car-button">Dodaj samochód</button>
+
+        <div class="mushroom-list" id="mushroomList">
+            <label for="mushroomType">Rodzaj grzyba:</label>
+            <select id="mushroomType">
+                <option value="borowik">Borowik</option>
+                <option value="kurka">Kurka</option>
+                <option value="pieczarka">Pieczarka</option>
+                <option value="maślak">Maślak</option>
+                <option value="koźlarz">Koźlarz</option>
+                <option value="muchomor">Muchomor</option>
+            </select>
+            <label for="mushroomSize">Rozmiar obszaru:</label>
+            <input id="mushroomSize" type="range" min="50" max="500" value="150">
+            <button id="addMushroomArea">Dodaj grzyb</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').locate({
+            setView: true,
+            maxZoom: 16,
+            enableHighAccuracy: true, // lepsza dokładność GPS
+            watch: true                // śledzenie bieżącej pozycji
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap &copy; CartoDB'
+        }).addTo(map);
+
+        let userMarker = null;
+
+        map.on('locationfound', (e) => {
+            if (!userMarker) {
+                userMarker = L.marker(e.latlng, {
+                    icon: L.divIcon({
+                        className: 'user-icon',
+                        html: '<div class="direction"></div>',
+                        iconSize: [20, 20]
+                    })
+                }).addTo(map);
+            }
+            userMarker.setLatLng(e.latlng);
+            map.setView(e.latlng, 16); // aktualizacja mapy do pozycji użytkownika
+        });
+
+        const mushroomColors = {
+            borowik: 'brown',
+            kurka: 'yellow',
+            pieczarka: 'white',
+            maślak: 'orange',
+            koźlarz: 'blue',
+            muchomor: 'red'
+        };
+
+        let carMarker = null;
+        let tracking = false;
+        let totalDistance = 0;
+        let trackPath = L.polyline([], { color: 'blue' }).addTo(map);
+        let lastPosition = null;
+        let watchId = null;
+
+        document.getElementById('addMushroomArea').addEventListener('click', () => {
+            const mushroomType = document.getElementById('mushroomType').value;
+            const mushroomColor = mushroomColors[mushroomType];
+            const radius = document.getElementById('mushroomSize').value;
+            const center = map.getCenter();
+
+            const mushroomArea = L.circle(center, {
+                color: mushroomColor,
+                fillColor: mushroomColor,
+                fillOpacity: 0.3,
+                radius: radius
+            }).addTo(map);
+
+
+            mushroomArea.bindPopup(`<button class="popup-button" onclick="removeMushroom(${mushroomArea._leaflet_id})">Usuń grzyb</button>`);
+        });
+
+
+        function removeMushroom(id) {
+            const layer = map._layers[id];
+            if (layer) {
+                map.removeLayer(layer);
+            }
+        }
+
+        document.getElementById('carButton').addEventListener('click', () => {
+            if (!carMarker) {
+                const center = map.getCenter();
+                carMarker = L.marker(center, { draggable: true })
+                    .addTo(map)
+                    .bindPopup('<button class="popup-button" onclick="removeCar()">Usuń samochód</button>');
+            }
+        });
+
+        function removeCar() {
+            if (carMarker) {
+                map.removeLayer(carMarker);
+                carMarker = null;
+            }
+        }
+
+        document.getElementById('trackButton').addEventListener('click', () => {
+            tracking = !tracking;
+            if (tracking) {
+                trackPath.setLatLngs([]);
+                totalDistance = 0;
+                lastPosition = null;
+                document.getElementById('trackButton').textContent = 'Zatrzymaj';
+                document.getElementById('trackButton').style.backgroundColor = 'red';
+                watchId = navigator.geolocation.watchPosition(updatePosition, console.error, { enableHighAccuracy: true });
+            } else {
+                document.getElementById('trackButton').textContent = 'Start trasy';
+                document.getElementById('trackButton').style.backgroundColor = '#007bff';
+                navigator.geolocation.clearWatch(watchId);
+            }
+        });
+
+        function updatePosition(position) {
+            const newLatLng = [position.coords.latitude, position.coords.longitude];
+            if (lastPosition) {
+                const distance = map.distance(lastPosition, newLatLng) / 1000;
+                totalDistance += distance;
+                document.getElementById('distance').textContent = `Łączny dystans: ${totalDistance.toFixed(2)} km`;
+                trackPath.addLatLng(newLatLng);
+            }
+            lastPosition = newLatLng;
+        }
+    </script>
+
+</body>
+
+</html>
